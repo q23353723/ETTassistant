@@ -1,0 +1,119 @@
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+
+/*
+html,body{
+background-image: url('medical-background.png');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}*/
+
+body {
+    font-family: 'Poppins', 'Noto Sans TC', '微軟正黑體', sans-serif;
+    background: -webkit-linear-gradient(to right bottom, rgb(205, 204, 238), transparent, rgb(205, 204, 238)),
+                -webkit-linear-gradient(to left bottom, rgb(227, 183, 184), transparent, rgb(227, 183, 184));
+    background: -moz-linear-gradient(to right bottom, rgb(205, 204, 238), transparent, rgb(205, 204, 238)),
+                -moz-linear-gradient(to left bottom, rgb(227, 183, 184), transparent, rgb(227, 183, 184));
+    background: -o-linear-gradient(to right bottom, rgb(205, 204, 238), transparent, rgb(205, 204, 238)),
+                -o-linear-gradient(to left bottom, rgb(227, 183, 184), transparent, rgb(227, 183, 184));
+    background: linear-gradient(to right bottom, rgb(205, 204, 238), transparent, rgb(205, 204, 238)),
+                linear-gradient(to left bottom, rgb(227, 183, 184), transparent, rgb(227, 183, 184));
+    background-attachment:fixed;
+    background-blend-mode: overlay;
+    height: 100%;
+}
+
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height:300px;
+margin: 150px auto;
+width: 500px;
+background-color: rgba(0,0,0,0.8) !important;
+}
+/*
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: rgb(227, 183, 184);
+}
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+*/
+.card-header h3{
+color: white;
+}
+/*
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+*/
+.input-group-prepend span{
+width: 50px;
+background-color: rgb(227, 183, 184);
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 40px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: rgb(227, 183, 184);
+width: 130px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+.form-group{
+    text-align: right;
+    margin-top: 20px;
+}
+.login_btn{
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 8px;
+    background-color: rgb(227, 183, 184)0;
+}
+.login_btn:hover{
+    text-decoration: none;
+}
