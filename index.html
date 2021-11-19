@@ -179,9 +179,7 @@
 
                                         //Loading window open
                                         console.log("請稍後");
-                                        getBase64(file).then(base64_uri => {
-                                            console.log(base64_uri);
-                                            
+                                        getBase64(file).then(base64_uri => {                                     
                                             axios.post('https://api.laiyouda.net/predict', {image: base64_uri}, {
                                                 headers: {
                                                     'Content-Type': 'application/json',
