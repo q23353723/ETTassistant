@@ -122,22 +122,28 @@
                     </div>
                     <div id="client" class="my-1 mr-2 p-2">
                         <div class="my-4 mr-2 p-4">
-                            <h4 class="client-info pb-1 font-weight-bold">
-                                <p>張一 男</p>
-                                <p>075 ／ 02 ／ 17</p>
-                            </h4>
-                            <br />
+                            <div class="row">
+                                <div class="col">
+                                    <h4 class="client-info pb-1 font-weight-bold">張一</h4>
+                                </div>
+                                <div class="col-auto">
+                                    <h4 class="client-info pb-1 font-weight-bold">男</h4>
+                                </div>
+                                <div class="col-12">
+                                    <h4 class="client-info pb-1 font-weight-bold">075 ／ 02 ／ 17</h4>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="row">
-                            <dt class="col-sm-6 py-2">藥物過敏</dt>
-                            <dd class="col-sm-6 py-2">無</dd>
+                        <div class="row px-4">
+                            <div class="col-sm-6 py-2 font-weight-bold">藥物過敏</div>
+                            <div class="col-sm-6 py-2">無</div>
 
-                            <dt class="col-sm-6 py-2">過去病史</dt>
-                            <dd class="col-sm-6 py-2">無</dd>
+                            <div class="col-sm-6 py-2 font-weight-bold">過去病史</div>
+                            <div class="col-sm-6 py-2">無</div>
 
-                            <dt class="col-sm-6 py-2">家族病史</dt>
-                            <dd class="col-sm-6 py-2">糖尿病</dd>
+                            <div class="col-sm-6 py-2 font-weight-bold">家族病史</div>
+                            <div class="col-sm-6 py-2">糖尿病</div>
                         </div>
                     </div>
                 </div>
@@ -161,9 +167,7 @@
                             <div class="row p-4">
                                 <h4 class="x-ray-title font-weight-bold">診斷 ／ X光 ／ 氣管插管X光影像</h4>
                                 <div class="xray my-2 mx-auto p-4">
-                                    <label for="preview">
-                                        <img id="xray-img" src="xray-default.png" class="img-fluid " />
-                                    </label>
+                                    <img id="xray-img" src="xray-default.png" class="img-fluid" onclick="document.getElementById('preview').click()" />
                                 </div>
                                 <div class="input-group my-2">
                                     <div class="custom-file">
