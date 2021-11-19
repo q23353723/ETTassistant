@@ -165,16 +165,18 @@
                             <div id="result" class="my-4 mr-2 p-4 panel-bg-white">                                
                                 <script>
                                     function predict(){
-                                        const file = document.getElementById('preview').files[0];
                                         const result = document.getElementById('result');
+                                        const file = document.getElementById('preview').files[0];
+                                        const formData = new FormData();
+                                        formData.append('file', file, file.name);
 
                                         //Loading window open
                                         console.log("請稍後");
                                         console.log(file);
                                     
-                                        axios.post('https://api.laiyouda.net/predict', {image: file}, {
+                                        axios.post('https://api.laiyouda.net/predict', formData, {
                                             headers: {
-                                                'Content-Type': 'application/json',
+                                                'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
                                                 "Access-Control-Allow-Origin": "*",
                                             }
                                         })
