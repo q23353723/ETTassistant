@@ -164,34 +164,43 @@
                             </div>
                             <div id="result" class="my-4 mr-2 p-4 panel-bg-white">                                
                                 <script>
+                                    function getBase64(file) {
+                                        return new Promise((resolve, reject) => {
+                                            const reader = new FileReader();
+                                            reader.readAsDataURL(file);
+                                            reader.onload = () => resolve(reader.result);
+                                            reader.onerror = error => reject(error);
+                                        });
+                                    }
+
                                     function predict(){
                                         const result = document.getElementById('result');
                                         const file = document.getElementById('preview').files[0];
-                                        const formData = new FormData();
-                                        formData.append('file', file, file.name);
 
                                         //Loading window open
                                         console.log("請稍後");
-                                        console.log(file);
-                                    
-                                        axios.post('https://api.laiyouda.net/predict', formData, {
-                                            headers: {
-                                                'accept': 'application/json',
-                                                'Content-Type': 'multipart/form-data',
-                                                'Access-Control-Allow-Origin': '*',
-                                            }
+                                        getBase64(file).then(base64_uri => {
+                                            console.log(base64_uri);
+                                            
+                                            axios.post('https://api.laiyouda.net/predict', {image: base64_uri}, {
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'Access-Control-Allow-Origin': '*',
+                                                }
+                                            })
+                                            .then(function (response) {
+                                                console.log(response.data)
+                                                result.innerHTML = "內管端點與分岔點距離(cm)：" + response.data['cm'] + "<br>說明：" + response.data['description']
+                                            })
+                                            .catch(function (error) {
+                                                console.log(error);
+                                            })
+                                            .then(function () {
+                                                //Loading window close
+                                                console.log("執行完畢")
+                                            }); 
                                         })
-                                        .then(function (response) {
-                                            console.log(response.data)
-                                            result.innerHTML = "內管端點與分岔點距離(cm)：" + response.data['cm'] + "<br>說明：" + response.data['description']
-                                        })
-                                        .catch(function (error) {
-                                            console.log(error);
-                                        })
-                                        .then(function () {
-                                            //Loading window close
-                                            console.log("執行完畢")
-                                        }); 
+                                        
                                     }                                
                                 </script>
                             </div>      
