@@ -230,13 +230,15 @@
         function predict(){
             const result = document.getElementById('result');
             const file = document.getElementById('preview').files[0];
+            const img = document.getElementById('xray-img');
 
             //Loading window open
             if (file) {
                 console.log("請稍後");
                 $('#loadingModal').modal('toggle');
-                getBase64(file).then(base64_uri => {                                     
-                    axios.post('https://api.laiyouda.net/predict', {image: base64_uri}, {
+                getBase64(file).then(base64_uri => {   
+                    //https://api.laiyouda.net/predict                                  
+                    axios.post('http://127.0.0.1:5000/predict', {image: base64_uri}, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Access-Control-Allow-Origin': '*',
@@ -245,6 +247,7 @@
                     .then(function (response) {
                         console.log(response.data)
                         result.innerHTML = "內管端點與分岔點距離(cm)：" + response.data['cm'] + "<br>說明：" + response.data['description']
+                        img.src = 'data:image/jpeg;base64, '+ response.data['image'];
                     })
                     .catch(function (error) {
                         console.log(error);
