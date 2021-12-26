@@ -236,9 +236,8 @@
             if (file) {
                 console.log("請稍後");
                 $('#loadingModal').modal('toggle');
-                getBase64(file).then(base64_uri => {   
-                    //https://api.laiyouda.net/predict                                  
-                    axios.post('http://127.0.0.1:5000/predict', {image: base64_uri}, {
+                getBase64(file).then(base64_uri => {                                   
+                    axios.post('https://api.laiyouda.net/predict', {image: base64_uri}, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Access-Control-Allow-Origin': '*',
