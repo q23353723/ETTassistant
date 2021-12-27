@@ -44,17 +44,28 @@
             border-radius: 30px;
         }
 
-        .panel-right-bg-white {            
+        .panel-rightTop-bg-white {            
             background: #FFFFFF;
             border-radius: 30px;
-            height: 90%;
+            height: 35%;
+            font-size: 1em;
+        }
+        .panel-rightDown-bg-white {            
+            background: #FFFFFF;
+            border-radius: 30px;
+            height: 50%;
             font-size: 1em;
         }
         .result-title {         
             height: 5%;
         }
 
-
+        /* 標點圖示 */
+        #dot {
+            list-style-image:url('./dot.png');
+            margin-left: -1.5em;
+        }
+        
         /* 字型 */
         h3.title {
             font-size: 1.8rem;
@@ -192,7 +203,20 @@
                             <div class="p-4 result-title">
                                 <h3 class="title font-weight-bold">判斷結果</h3>
                             </div>
-                            <div id="result" class="mt-4 mr-2 p-4 fs-5 panel-right-bg-white"></div>      
+                            <div id="result" class="mt-4 mr-2 p-4 fs-5 panel-rightTop-bg-white"></div> 
+                            <div class="mt-4 mr-2 p-4 fs-5 panel-rightDown-bg-white">    
+                                <ul id="dot">
+                                    <li><h5 class="font-weight-bold">(上)　氣管端點</h5></li>
+                                    <li><h5 class="font-weight-bold">(下)　Carina分岔點</h5></li>
+                                </ul>
+                                <br/>
+                                <br/>
+                                <h5 class="font-weight-bold">§ 合適位置標準：</h5>
+                                <h5 class="pl-5 font-weight-bold">兩點距離 3~7cm</h5>
+                                <br/>
+                                <h5 class="font-weight-bold">§ 比例標準：</h5>
+                                <h5 class="pl-5 font-weight-bold">pixel : cm = 72 : 1</h5>
+                            </div>     
                         </div>
                     </div>
                 </div>
@@ -236,7 +260,7 @@
             if (file) {
                 console.log("請稍後");
                 $('#loadingModal').modal('toggle');
-                getBase64(file).then(base64_uri => {                                   
+                getBase64(file).then(base64_uri => {                                     
                     axios.post('https://api.laiyouda.net/predict', {image: base64_uri}, {
                         headers: {
                             'Content-Type': 'application/json',
@@ -245,7 +269,7 @@
                     })
                     .then(function (response) {
                         console.log(response.data)
-                        result.innerHTML = "內管端點與分岔點距離(cm)：" + response.data['cm'] + "<br>說明：" + response.data['description']
+                        result.innerHTML = "<h5>內管端點與分岔點距離：</h5><h5>" + (response.data['cm']).toFixed(3) + " cm</h5><br><h5>說明：</h5><h5>" + response.data['description'] + "</h5>"
                         img.src = 'data:image/jpeg;base64, '+ response.data['image'];
                     })
                     .catch(function (error) {
