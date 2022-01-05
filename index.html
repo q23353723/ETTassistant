@@ -65,6 +65,10 @@
             list-style-image:url('dot.png');
             margin-left: -1.5em;
         }
+        #Gdot {
+            list-style-image:url('Gdot.png');
+            margin-left: -1.5em;
+        }
         
         /* 字型 */
         h3.title {
@@ -205,9 +209,11 @@
                             </div>
                             <div id="result" class="mt-4 mr-2 p-4 fs-5 panel-rightTop-bg-white"></div> 
                             <div class="mt-4 mr-2 p-4 fs-5 panel-rightDown-bg-white">    
+                                <ul id="Gdot">
+                                    <li><h5 class="font-weight-bold" >氣管端點</h5></li>
+                                </ul>
                                 <ul id="dot">
-                                    <li><h5 class="font-weight-bold">(上)　氣管端點</h5></li>
-                                    <li><h5 class="font-weight-bold">(下)　Carina分岔點</h5></li>
+                                    <li><h5 class="font-weight-bold">Carina分岔點</h5></li>
                                 </ul>
                                 <br/>
                                 <br/>
@@ -269,7 +275,12 @@
                     })
                     .then(function (response) {
                         console.log(response.data)
-                        result.innerHTML = "<h5>內管端點與分岔點距離：</h5><h5>" + (response.data['cm']).toFixed(3) + " cm</h5><br><h5>說明：</h5><h5>" + response.data['description'] + "</h5>"
+                        if(response.data['result']) {
+                            result.innerHTML = "<h2 style='color:green'>安裝恰當</h2><br>"
+                        } else {
+                            result.innerHTML = "<h2 style='color:red'>安裝不恰當</h2><br>"
+                        }
+                        result.innerHTML += "<h5>內管端點與分岔點距離：</h5><h5>" + (response.data['cm']).toFixed(3) + " cm</h5><br><h5>說明：</h5><h5>" + response.data['description'] + "</h5>"
                         img.src = 'data:image/jpeg;base64, '+ response.data['image'];
                     })
                     .catch(function (error) {
